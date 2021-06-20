@@ -1,15 +1,16 @@
 {
   "name": "@skybackend/mongoose-paginate-v2",
-  "version": "1.3.19",
+  "version": "1.3.20",
   "description": "A cursor based custom pagination library for Mongoose with customizable labels.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
-    "test": "./node_modules/.bin/mocha tests/*.js -R spec --ui bdd --timeout 9999999",
-    "build": "babel src -d dist",
+    "test:disabled": "./node_modules/.bin/mocha tests/*.js -R spec --ui bdd --timeout 9999999",
+    "build": "babel src -d dist & cp src/index.d.ts dist",
     "lint": "./node_modules/.bin/eslint \"tests\" \"src\" \".eslintrc.js\" --fix",
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.js\" \"*.md\"",
-    "prepublish": "npm run test"
+    "prepublish:disabled": "npm run test"
   },
   "husky": {
     "hooks": {
