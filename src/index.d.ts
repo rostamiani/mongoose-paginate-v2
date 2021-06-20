@@ -13,7 +13,7 @@
 import { ReadPreferenceMode } from 'mongodb';
 
 declare module 'mongoose' {
-  interface CustomLabels {
+  export interface CustomLabels {
     totalDocs?: string;
     limit?: string;
     page?: string;
@@ -23,11 +23,11 @@ declare module 'mongoose' {
     prevPage?: string;
   }
 
-  interface ModelPopulateOptions extends QueryPopulateOptions {
+  export interface ModelPopulateOptions extends QueryPopulateOptions {
     /** optional, if true Mongoose will always set path to an array. Inferred from schema by default */
     justOne?: boolean;
   }
-  interface QueryFindBaseOptions {
+  export interface QueryFindBaseOptions {
     /** Sets a default collation for every query and aggregation. */
     collation?: CollationOptions;
     explain?: any;
@@ -39,7 +39,7 @@ declare module 'mongoose' {
     session?: ClientSession;
   }
 
-  interface QueryFindOptions extends QueryFindBaseOptions {
+  export interface QueryFindOptions extends QueryFindBaseOptions {
     batchSize?: number;
     comment?: any;
     hint?: any;
@@ -52,7 +52,7 @@ declare module 'mongoose' {
     tailable?: any;
   }
 
-  interface CollationOptions {
+  export interface CollationOptions {
     locale?: string;
     caseLevel?: boolean;
     caseFirst?: string;
@@ -63,12 +63,12 @@ declare module 'mongoose' {
     backwards?: boolean;
   }
 
-  interface ReadOptions {
+  export interface ReadOptions {
     pref: string;
     tags?: any[];
   }
 
-  interface PaginateOptions {
+  export interface PaginateOptions {
     select?: object | string;
     sort?: object | string;
     customLabels?: CustomLabels;
@@ -86,7 +86,7 @@ declare module 'mongoose' {
     options?: QueryFindOptions;
   }
 
-  interface QueryPopulateOptions {
+  export interface QueryPopulateOptions {
     /** space delimited path(s) to populate */
     path: string;
     /** optional fields to select */
@@ -101,7 +101,7 @@ declare module 'mongoose' {
     populate?: QueryPopulateOptions | QueryPopulateOptions[];
   }
 
-  interface PaginateResult<T> {
+  export interface PaginateResult<T> {
     docs: T[];
     totalDocs: number;
     limit: number;
@@ -116,7 +116,7 @@ declare module 'mongoose' {
     [customLabel: string]: T[] | number | boolean | null | undefined;
   }
 
-  interface PaginateModel<T extends Document> extends Model<T> {
+  export interface PaginateModel<T extends Document> extends Model<T> {
     paginate(
       query?: FilterQuery<T>,
       options?: PaginateOptions,
@@ -128,8 +128,7 @@ declare module 'mongoose' {
 }
 
 import mongoose = require('mongoose');
-declare function _(schema: mongoose.Schema): void;
-export = _;
-declare namespace _ {
-  const paginate: { options: mongoose.PaginateOptions };
-}
+
+export declare function mongoosePaginate(schema: mongoose.Schema): void;
+export const paginate: { options: mongoose.PaginateOptions };
+export { PaginateOptions, PaginateResult, CustomLabels, PaginateModel, CollationOptions, QueryFindOptions } from 'mongoose';
