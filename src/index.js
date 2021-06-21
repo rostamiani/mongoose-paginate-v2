@@ -21,6 +21,8 @@
  * @returns {Promise}
  */
 
+const { Mongoose } = require('mongoose');
+
 const defaultOptions = {
   customLabels: {
     totalDocs: 'totalDocs',
@@ -277,3 +279,9 @@ module.exports = (schema) => {
 };
 
 module.exports.paginate = paginate;
+module.exports.PaginateOptions = Mongoose.PaginateOptions;
+module.exports.PaginateResult = Mongoose.PaginateResult;
+module.exports.CustomLabels = Mongoose.CustomLabels;
+module.exports.PaginateModel = Mongoose.PaginateModel;
+module.exports.CollationOptions = Mongoose.CollationOptions;
+module.QueryFindOptions = Mongoose.QueryFindOptions;

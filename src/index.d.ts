@@ -129,6 +129,7 @@ declare module 'mongoose' {
 
 import mongoose = require('mongoose');
 
+export default function paginatePlugin(schema: mongoose.Schema): void;
+export function paginate(): { options: mongoose.PaginateOptions };
 export declare function mongoosePaginate(schema: mongoose.Schema): void;
-export const paginate: { options: mongoose.PaginateOptions };
 export { PaginateOptions, PaginateResult, CustomLabels, PaginateModel, CollationOptions, QueryFindOptions } from 'mongoose';
