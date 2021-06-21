@@ -1,6 +1,6 @@
 {
   "name": "@skybackend/mongoose-paginate-v2",
-  "version": "1.3.26",
+  "version": "1.3.27",
   "description": "A cursor based custom pagination library for Mongoose with customizable labels.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
